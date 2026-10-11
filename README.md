@@ -59,6 +59,8 @@ Tests run offline with a fake classifier and embedder:
 ```powershell
 pytest -q
 ```
+## Sample Test
+![Failure Pattern Memory](fpm.png)
 
 ## Requirements
 
