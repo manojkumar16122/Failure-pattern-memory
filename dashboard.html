@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Failure Pattern Memory - Dashboard</title>
+<style>
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:#f8fafc;
+         color:#0f172a; margin:0; padding:32px; }
+  header h1 { margin:0 0 4px; font-size:28px; }
+  header p { margin:0 0 24px; color:#64748b; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin-bottom:24px; }
+  .card { background:#fff; border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .num { font-size:32px; font-weight:700; color:#2563eb; }
+  .lab { color:#64748b; font-size:14px; }
+  .charts { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:16px; margin-bottom:24px; }
+  .panel { background:#fff; border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .panel h3 { margin:0 0 12px; font-size:16px; }
+  svg .lbl { font-size:13px; fill:#334155; }
+  svg .val { font-size:13px; fill:#0f172a; font-weight:600; }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden;
+          box-shadow:0 1px 3px rgba(0,0,0,.08); font-size:14px; }
+  th, td { text-align:left; padding:10px 14px; border-bottom:1px solid #e2e8f0; }
+  th { background:#0f172a; color:#fff; font-weight:600; }
+  .pill { color:#fff; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:600; }
+  .muted { color:#64748b; }
+  footer { margin-top:16px; color:#94a3b8; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Failure Pattern Memory</h1>
+  <p>Recorded agent failures and the patterns behind them</p>
+</header>
+<section class="cards"><div class="card"><div class="num">4</div><div class="lab">Failures recorded</div></div><div class="card"><div class="num">2</div><div class="lab">High or critical</div></div><div class="card"><div class="num">4</div><div class="lab">Error categories</div></div><div class="card"><div class="num">4</div><div class="lab">Task types</div></div></section>
+<section class="charts"><div class='panel'><h3>Failures by severity</h3><svg viewBox="0 0 460 70" width="100%" role="img" aria-label="Failures by severity"><text x="0" y="23" class="lbl">medium</text><rect x="175" y="9" width="240" height="18" rx="4" fill="#eab308"/><text x="423" y="23" class="val">2</text><text x="0" y="55" class="lbl">high</text><rect x="175" y="41" width="240" height="18" rx="4" fill="#f97316"/><text x="423" y="55" class="val">2</text></svg></div><div class='panel'><h3>Failures by error category</h3><svg viewBox="0 0 460 134" width="100%" role="img" aria-label="Failures by error category"><text x="0" y="23" class="lbl">EXTERNAL_ERROR</text><rect x="175" y="9" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="23" class="val">1</text><text x="0" y="55" class="lbl">TEST_FAILURE</text><rect x="175" y="41" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="55" class="val">1</text><text x="0" y="87" class="lbl">AGENT_FAILURE</text><rect x="175" y="73" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="87" class="val">1</text><text x="0" y="119" class="lbl">TOOL_FAILURE</text><rect x="175" y="105" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="119" class="val">1</text></svg></div><div class='panel'><h3>Failures by task type</h3><svg viewBox="0 0 460 134" width="100%" role="img" aria-label="Failures by task type"><text x="0" y="23" class="lbl">api_call</text><rect x="175" y="9" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="23" class="val">1</text><text x="0" y="55" class="lbl">testing</text><rect x="175" y="41" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="55" class="val">1</text><text x="0" y="87" class="lbl">multi_agent</text><rect x="175" y="73" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="87" class="val">1</text><text x="0" y="119" class="lbl">script_run</text><rect x="175" y="105" width="240" height="18" rx="4" fill="#2563eb"/><text x="423" y="119" class="val">1</text></svg></div></section>
+<h2 style="font-size:18px">Recent failures</h2>
+<table>
+  <thead><tr><th>Time (UTC)</th><th>Category</th><th>Pattern</th><th>Task</th><th>Severity</th></tr></thead>
+  <tbody><tr><td>2026-10-11 03:22</td><td>EXTERNAL_ERROR</td><td>OpenAI API rate limit</td><td>api_call</td><td><span class='pill' style='background:#f97316'>high</span></td></tr><tr><td>2026-10-11 03:22</td><td>TEST_FAILURE</td><td>stale mock assertion error</td><td>testing</td><td><span class='pill' style='background:#eab308'>medium</span></td></tr><tr><td>2026-10-11 03:22</td><td>AGENT_FAILURE</td><td>hallucinated output propagation</td><td>multi_agent</td><td><span class='pill' style='background:#f97316'>high</span></td></tr><tr><td>2026-10-11 03:22</td><td>TOOL_FAILURE</td><td>ModuleNotFoundError requests</td><td>script_run</td><td><span class='pill' style='background:#eab308'>medium</span></td></tr></tbody>
+</table>
+<footer>Generated from the failure database. Total records: 4.</footer>
+</body>
+</html>
